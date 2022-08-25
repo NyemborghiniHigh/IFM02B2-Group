@@ -36,7 +36,7 @@
                                 <li><a class="dropdown-item" href="#!">All Products</a></li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                                <li><a class="dropdown-item" href="shop.aspx">New Arrivals</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -56,33 +56,7 @@
             </div>
         </header>
 
-        <!--Second Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container px-4 px-lg-5">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#!">Raw Food</a></li>
-                            <li><hr class="dropdown-divider" /></li>
-                            <li><a class="dropdown-item" href="#!">Cat Food</a></li>
-                            <li><a class="dropdown-item" href="#!">Dog Food</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">All Products</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Popular Items</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">New Arrivals</a></li>   
-                </ul>
-                <form class="d-flex">
-                    <button class="btn btn-outline-dark" type="submit">
-                        <i class="bi-cart-fill me-1"></i>
-                        Cart
-                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                    </button>
-                 </form>
-			</div>
-        </nav>
+        
 
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
