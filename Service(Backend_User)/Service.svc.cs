@@ -13,24 +13,48 @@ namespace WCFService1
     public class Service1 : IService1
     {
         DataClasses1DataContext db = new DataClasses1DataContext();
-        public bool register(string firstname, string surname, string username, string email, string user_type, string password)
+        public bool newUser(User user)
         {
-            var newUser = new SysUser();
-   
-            newUser.First_Name = firstname;
-            newUser.Surname = surname;
-            newUser.Username = username;
-            newUser.Email = email;
-            newUser.User_Type = user_type;
-            newUser.Password = Secrecy.HashPassword(password);
+            var newUser = new User();
 
+            newUser.Email = user.Email;
+            newUser.Name = user.Name;
+            newUser.Password = user.Password;
+            newUser.Phone = user.Phone;
+            newUser.DOB = user.DOB;
 
-            db.SysUsers.InsertOnSubmit(newUser);
+            db.Users.InsertOnSubmit(newUser);
             try
             {
                 db.SubmitChanges();
                 return true;
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
+            {
+                ex.GetBaseException();
+                return false;
+            }
+        }
+
+        public bool editUser(User edit)
+        {
+            var tempUser = (from u in db.Users
+                            where edit.Id == u.Id
+                            select u).FirstOrDefault();
+
+            tempUser.Email = edit.Email;
+            tempUser.Name = edit.Name;
+            tempUser.Password = edit.Password;
+            tempUser.Phone = edit.Phone;
+            tempUser.DOB = edit.DOB;
+
+            db.Users.InsertOnSubmit(tempUser);
+            try
+            {
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
             {
                 ex.GetBaseException();
                 return false;
@@ -59,29 +83,6 @@ namespace WCFService1
             else
             {
                 return null;
-            }
-        }
-
-        public bool EditUser(SysUser user)
-        {
-            var tempUser = (from u in db.SysUsers
-                        where user.UserID == u.UserID
-                            select u).FirstOrDefault();
-
-            //tempUser.UserID = user.UserID;
-            tempUser.First_Name = user.First_Name;
-            tempUser.Surname = user.Surname;
-            tempUser.Username = user.Username;
-            tempUser.Email = user.Email;
-
-            try
-            {
-                db.SubmitChanges();
-                return true;
-            }catch(Exception e)
-            {
-                e.GetBaseException();
-                return false;
             }
         }
     }
