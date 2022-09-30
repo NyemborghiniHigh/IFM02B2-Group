@@ -49,3 +49,28 @@ namespace WebApplication1
         }
     }
 }
+
+//im just adding this check if you agree with it it checks if the email is registered your way looks much better but we should change it to a User abjoct
+
+protected void editRes_Click(object sender, EventArgs e)
+        {
+            dynamic em = service.getAllEmails();
+            Reservation editReservation = new Reservation
+            {
+                Name = m_fname.Value,
+                LName = m_lname.Value,
+                Email = m_email.Value,
+                Persons = Convert.ToInt32(m_people.Value),
+                Phone = m_phone.Value,
+                Date = Convert.ToDateTime(m_date.Value),
+                Time = m_time.Value,
+                Note = m_message.Value
+            };
+            foreach (Reservation r in em)
+            {
+                if (r.Email.Equals(email_Edit))
+                {
+                    service.EditReservation(editReservation);
+                }
+            }
+        }
